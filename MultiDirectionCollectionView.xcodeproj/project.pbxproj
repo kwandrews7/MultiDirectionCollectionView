@@ -7,11 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		FB0826A31ABF65D3001FB3DB /* CustomCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB0826A21ABF65D3001FB3DB /* CustomCollectionViewCell.swift */; };
 		FB5D953C1ABE5E6B00E7C8CD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB5D953B1ABE5E6B00E7C8CD /* AppDelegate.swift */; };
 		FB5D95411ABE5E6B00E7C8CD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FB5D953F1ABE5E6B00E7C8CD /* Main.storyboard */; };
 		FB5D95431ABE5E6B00E7C8CD /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FB5D95421ABE5E6B00E7C8CD /* Images.xcassets */; };
 		FB5D95461ABE5E6B00E7C8CD /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = FB5D95441ABE5E6B00E7C8CD /* LaunchScreen.xib */; };
 		FB5D95521ABE5E6B00E7C8CD /* MultiDirectionCollectionViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB5D95511ABE5E6B00E7C8CD /* MultiDirectionCollectionViewTests.swift */; };
+		FBD0C7FA1ABE6DBA00C056C8 /* CustomCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBD0C7F91ABE6DBA00C056C8 /* CustomCollectionViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -25,6 +27,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		FB0826A21ABF65D3001FB3DB /* CustomCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomCollectionViewCell.swift; sourceTree = "<group>"; };
 		FB5D95361ABE5E6B00E7C8CD /* MultiDirectionCollectionView.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MultiDirectionCollectionView.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FB5D953A1ABE5E6B00E7C8CD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FB5D953B1ABE5E6B00E7C8CD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -34,6 +37,7 @@
 		FB5D954B1ABE5E6B00E7C8CD /* MultiDirectionCollectionViewTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MultiDirectionCollectionViewTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		FB5D95501ABE5E6B00E7C8CD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FB5D95511ABE5E6B00E7C8CD /* MultiDirectionCollectionViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultiDirectionCollectionViewTests.swift; sourceTree = "<group>"; };
+		FBD0C7F91ABE6DBA00C056C8 /* CustomCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomCollectionViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -76,6 +80,8 @@
 			isa = PBXGroup;
 			children = (
 				FB5D953B1ABE5E6B00E7C8CD /* AppDelegate.swift */,
+				FBD0C7F91ABE6DBA00C056C8 /* CustomCollectionViewController.swift */,
+				FB0826A21ABF65D3001FB3DB /* CustomCollectionViewCell.swift */,
 				FB5D953F1ABE5E6B00E7C8CD /* Main.storyboard */,
 				FB5D95421ABE5E6B00E7C8CD /* Images.xcassets */,
 				FB5D95441ABE5E6B00E7C8CD /* LaunchScreen.xib */,
@@ -210,6 +216,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				FB5D953C1ABE5E6B00E7C8CD /* AppDelegate.swift in Sources */,
+				FB0826A31ABF65D3001FB3DB /* CustomCollectionViewCell.swift in Sources */,
+				FBD0C7FA1ABE6DBA00C056C8 /* CustomCollectionViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -403,6 +411,7 @@
 				FB5D95571ABE5E6B00E7C8CD /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		FB5D95581ABE5E6B00E7C8CD /* Build configuration list for PBXNativeTarget "MultiDirectionCollectionViewTests" */ = {
 			isa = XCConfigurationList;
@@ -411,6 +420,7 @@
 				FB5D955A1ABE5E6B00E7C8CD /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
