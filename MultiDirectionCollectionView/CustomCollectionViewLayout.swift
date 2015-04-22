@@ -28,12 +28,80 @@ class CustomCollectionViewLayout: UICollectionViewLayout {
     // within the collection view.
     var contentSize = CGSize.zeroSize
     
+    // Used to determine if a data source update has occured.
+    // Note: The data source would be responsible for updating
+    // this value if an update was performed.
+    var dataSourceDidUpdate = true
+    
     override func collectionViewContentSize() -> CGSize {
         return self.contentSize
     }
     
     override func prepareLayout() {
-  
+        
+        // Only update header cells.
+        if !dataSourceDidUpdate {
+            
+            // Determine current content offsets.
+            let xOffset = collectionView!.contentOffset.x
+            let yOffset = collectionView!.contentOffset.y
+            
+            if collectionView?.numberOfSections() > 0 {
+                for section in 0...collectionView!.numberOfSections()-1 {
+                    
+                    // Confirm the section has items.
+                    if collectionView?.numberOfItemsInSection(section) > 0 {
+                        
+                        // Update all items in the first row.
+                        if section == 0 {
+                            for item in 0...collectionView!.numberOfItemsInSection(section)-1 {
+                                
+                                // Build indexPath to get attributes from dictionary.
+                                let indexPath = NSIndexPath(forItem: item, inSection: section)
+                                
+                                // Update y-position to follow user.
+                                if let attrs = cellAttrsDictionary[indexPath] {
+                                    var frame = attrs.frame
+                                    
+                                    // Also update x-position for corner cell.
+                                    if item == 0 {
+                                        frame.origin.x = xOffset
+                                    }
+                                    
+                                    frame.origin.y = yOffset
+                                    attrs.frame = frame
+                                }
+                                
+                            }
+                            
+                            // For all other sections, we only need to update
+                            // the x-position for the fist item.
+                        } else {
+                            
+                            // Build indexPath to get attributes from dictionary.
+                            let indexPath = NSIndexPath(forItem: 0, inSection: section)
+                            
+                            // Update y-position to follow user.
+                            if let attrs = cellAttrsDictionary[indexPath] {
+                                var frame = attrs.frame
+                                frame.origin.x = xOffset
+                                attrs.frame = frame
+                            }
+                            
+                        }
+                    }
+                }
+            }
+            
+            
+            // Do not run attribute generation code
+            // unless data source has been updated.
+            return
+        }
+        
+        // Acknowledge data source change, and disable for next time.
+        dataSourceDidUpdate = false
+        
         // Cycle through each section of the data source.
         if collectionView?.numberOfSections() > 0 {
             for section in 0...collectionView!.numberOfSections()-1 {
@@ -98,7 +166,7 @@ class CustomCollectionViewLayout: UICollectionViewLayout {
     }
     
     override func shouldInvalidateLayoutForBoundsChange(newBounds: CGRect) -> Bool {
-        return false
+        return true
     }
     
 }
