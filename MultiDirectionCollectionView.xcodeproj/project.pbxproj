@@ -13,6 +13,7 @@
 		FB5D95431ABE5E6B00E7C8CD /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FB5D95421ABE5E6B00E7C8CD /* Images.xcassets */; };
 		FB5D95461ABE5E6B00E7C8CD /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = FB5D95441ABE5E6B00E7C8CD /* LaunchScreen.xib */; };
 		FB5D95521ABE5E6B00E7C8CD /* MultiDirectionCollectionViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB5D95511ABE5E6B00E7C8CD /* MultiDirectionCollectionViewTests.swift */; };
+		FB6CDB401AE5F513009834B6 /* CustomCollectionViewLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB6CDB3F1AE5F513009834B6 /* CustomCollectionViewLayout.swift */; };
 		FBD0C7FA1ABE6DBA00C056C8 /* CustomCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBD0C7F91ABE6DBA00C056C8 /* CustomCollectionViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -37,6 +38,7 @@
 		FB5D954B1ABE5E6B00E7C8CD /* MultiDirectionCollectionViewTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MultiDirectionCollectionViewTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		FB5D95501ABE5E6B00E7C8CD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FB5D95511ABE5E6B00E7C8CD /* MultiDirectionCollectionViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultiDirectionCollectionViewTests.swift; sourceTree = "<group>"; };
+		FB6CDB3F1AE5F513009834B6 /* CustomCollectionViewLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomCollectionViewLayout.swift; sourceTree = "<group>"; };
 		FBD0C7F91ABE6DBA00C056C8 /* CustomCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomCollectionViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -82,6 +84,7 @@
 				FB5D953B1ABE5E6B00E7C8CD /* AppDelegate.swift */,
 				FBD0C7F91ABE6DBA00C056C8 /* CustomCollectionViewController.swift */,
 				FB0826A21ABF65D3001FB3DB /* CustomCollectionViewCell.swift */,
+				FB6CDB3F1AE5F513009834B6 /* CustomCollectionViewLayout.swift */,
 				FB5D953F1ABE5E6B00E7C8CD /* Main.storyboard */,
 				FB5D95421ABE5E6B00E7C8CD /* Images.xcassets */,
 				FB5D95441ABE5E6B00E7C8CD /* LaunchScreen.xib */,
@@ -217,6 +220,7 @@
 			files = (
 				FB5D953C1ABE5E6B00E7C8CD /* AppDelegate.swift in Sources */,
 				FB0826A31ABF65D3001FB3DB /* CustomCollectionViewCell.swift in Sources */,
+				FB6CDB401AE5F513009834B6 /* CustomCollectionViewLayout.swift in Sources */,
 				FBD0C7FA1ABE6DBA00C056C8 /* CustomCollectionViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -343,8 +347,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = MultiDirectionCollectionView/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
@@ -353,8 +359,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = MultiDirectionCollectionView/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};
