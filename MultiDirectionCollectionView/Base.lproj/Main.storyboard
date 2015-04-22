@@ -4,7 +4,7 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7520"/>
     </dependencies>
     <scenes>
-        <!--Custom Collection View Controller-->
+        <!--MultiDirectionCollectionView-->
         <scene sceneID="Y0N-g9-AQb">
             <objects>
                 <collectionViewController id="hWx-t7-1N7" customClass="CustomCollectionViewController" customModule="MultiDirectionCollectionView" customModuleProvider="target" sceneMemberID="viewController">
@@ -49,7 +49,7 @@
                             <outlet property="delegate" destination="hWx-t7-1N7" id="X3s-uz-0Ex"/>
                         </connections>
                     </collectionView>
-                    <navigationItem key="navigationItem" id="kqZ-Ux-cJd"/>
+                    <navigationItem key="navigationItem" title="MultiDirectionCollectionView" id="kqZ-Ux-cJd"/>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JXE-vt-Zcj" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -58,7 +58,7 @@
         <!--Navigation Controller-->
         <scene sceneID="t3o-dI-kdq">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" navigationBarHidden="YES" id="b2a-Mg-nK0" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="b2a-Mg-nK0" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="DGH-zd-Dzt">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
