@@ -46,6 +46,9 @@ class CustomCollectionViewLayout: UICollectionViewLayout {
             let xOffset = collectionView!.contentOffset.x
             let yOffset = collectionView!.contentOffset.y
             
+            let colOneOffset = xOffset
+            let colTwoOffset = CGFloat(Double(xOffset) + CELL_WIDTH)
+            
             if collectionView?.numberOfSections() > 0 {
                 for section in 0...collectionView!.numberOfSections()-1 {
                     
@@ -64,8 +67,8 @@ class CustomCollectionViewLayout: UICollectionViewLayout {
                                     var frame = attrs.frame
                                     
                                     // Also update x-position for corner cell.
-                                    if item == 0 {
-                                        frame.origin.x = xOffset
+                                    if item <= 1 {
+                                        frame.origin.x = (item == 0) ? colOneOffset : colTwoOffset
                                     }
                                     
                                     frame.origin.y = yOffset
@@ -79,13 +82,15 @@ class CustomCollectionViewLayout: UICollectionViewLayout {
                         } else {
                             
                             // Build indexPath to get attributes from dictionary.
-                            let indexPath = NSIndexPath(forItem: 0, inSection: section)
-                            
-                            // Update y-position to follow user.
-                            if let attrs = cellAttrsDictionary[indexPath] {
-                                var frame = attrs.frame
-                                frame.origin.x = xOffset
-                                attrs.frame = frame
+                            for item in 0...1 {
+                                let indexPath = NSIndexPath(forItem: item, inSection: section)
+                                
+                                // Update y-position to follow user.
+                                if let attrs = cellAttrsDictionary[indexPath] {
+                                    var frame = attrs.frame
+                                    frame.origin.x = (item == 0) ? colOneOffset : colTwoOffset
+                                    attrs.frame = frame
+                                }
                             }
                             
                         }
@@ -119,11 +124,11 @@ class CustomCollectionViewLayout: UICollectionViewLayout {
                         cellAttributes.frame = CGRect(x: xPos, y: yPos, width: CELL_WIDTH, height: CELL_HEIGHT)
                         
                         // Determine zIndex based on cell type.
-                        if section == 0 && item == 0 {
+                        if section == 0 && item <= 1 {
                             cellAttributes.zIndex = 4
                         } else if section == 0 {
                             cellAttributes.zIndex = 3
-                        } else if item == 0 {
+                        } else if item <= 1 {
                             cellAttributes.zIndex = 2
                         } else {
                             cellAttributes.zIndex = 1
