@@ -1,10 +1,14 @@
 # MultiDirectionCollectionView-Starter
 
-*Starter Project for Credera.com Blog @ <link>*
+## Two-Col-Sticky Branch
+
+This branch is in relation to a comment on the blog asking how to setup two columns to be sticky. An example of this approach can be seen in this branches code base and visually at [http://imgur.com/bYlqi6G](Imgur).
+
+*Starter Project for Credera.com Blog @ https://www.credera.com/blog/mobile-applications-and-web/building-a-multi-directional-uicollectionview-in-swift/*
 
 ## What is this?
 
-This is a template project intended for use when following along with the *-TODO-BLOG_NAME-* on Credera.com at [https://www.credera.com/blog/mobile-applications-and-web/building-a-multi-directional-uicollectionview-in-swift/]. If you would prefer to create the project from scratch, step by step instructions for building the start project are provided below. 
+This is a template project intended for use when following along with the *-TODO-BLOG_NAME-* on Credera.com at https://www.credera.com/blog/mobile-applications-and-web/building-a-multi-directional-uicollectionview-in-swift/. If you would prefer to create the project from scratch, step by step instructions for building the start project are provided below. 
 
 ## Starting From Scratch
 
