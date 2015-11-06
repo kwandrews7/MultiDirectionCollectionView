@@ -1,10 +1,10 @@
 # MultiDirectionCollectionView-Starter
 
-*Starter Project for Credera.com Blog @ <link>*
+*Starter Project for Credera.com Blog @ https://www.credera.com/blog/mobile-applications-and-web/building-a-multi-directional-uicollectionview-in-swift/*
 
 ## What is this?
 
-This is a template project intended for use when following along with the *-TODO-BLOG_NAME-* on Credera.com at [*-TODO-BLOG_LINK-*](*-TODO-BLOG_LINK-*). If you would prefer to create the project from scratch, step by step instructions for building the start project are provided below. 
+This is a template project intended for use when following along with the *-TODO-BLOG_NAME-* on Credera.com at [Building a Multi-Directional UICollectionView in Swift](https://www.credera.com/blog/mobile-applications-and-web/building-a-multi-directional-uicollectionview-in-swift/). If you would prefer to create the project from scratch, step by step instructions for building the start project are provided below. 
 
 ## Starting From Scratch
 
