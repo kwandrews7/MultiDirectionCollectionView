@@ -26,7 +26,7 @@ class CustomCollectionViewLayout: UICollectionViewLayout {
     
     // Defines the size of the area the user can move around in
     // within the collection view.
-    var contentSize = CGSize.zeroSize
+    var contentSize = CGSize.zero
     
     // Used to determine if a data source update has occured.
     // Note: The data source would be responsible for updating
@@ -115,7 +115,7 @@ class CustomCollectionViewLayout: UICollectionViewLayout {
                         let xPos = Double(item) * CELL_WIDTH
                         let yPos = Double(section) * CELL_HEIGHT
                         
-                        var cellAttributes = UICollectionViewLayoutAttributes(forCellWithIndexPath: cellIndex)
+                        let cellAttributes = UICollectionViewLayoutAttributes(forCellWithIndexPath: cellIndex)
                         cellAttributes.frame = CGRect(x: xPos, y: yPos, width: CELL_WIDTH, height: CELL_HEIGHT)
                         
                         // Determine zIndex based on cell type.
@@ -145,13 +145,13 @@ class CustomCollectionViewLayout: UICollectionViewLayout {
         
     }
     
-    override func layoutAttributesForElementsInRect(rect: CGRect) -> [AnyObject]? {
+    override func layoutAttributesForElementsInRect(rect: CGRect) -> [UICollectionViewLayoutAttributes]? {
         
         // Create an array to hold all elements found in our current view.
         var attributesInRect = [UICollectionViewLayoutAttributes]()
         
         // Check each element to see if it should be returned.
-        for cellAttributes in cellAttrsDictionary.values.array {
+        for cellAttributes in cellAttrsDictionary.values {
             if CGRectIntersectsRect(rect, cellAttributes.frame) {
                 attributesInRect.append(cellAttributes)
             }
@@ -161,7 +161,7 @@ class CustomCollectionViewLayout: UICollectionViewLayout {
         return attributesInRect
     }
     
-    override func layoutAttributesForItemAtIndexPath(indexPath: NSIndexPath) -> UICollectionViewLayoutAttributes! {
+    override func layoutAttributesForItemAtIndexPath(indexPath: NSIndexPath) -> UICollectionViewLayoutAttributes? {
         return cellAttrsDictionary[indexPath]!
     }
     
