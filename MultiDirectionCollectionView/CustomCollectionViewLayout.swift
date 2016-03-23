@@ -88,10 +88,10 @@ class CustomCollectionViewLayout: UICollectionViewLayout {
                                 attrs.frame = frame
                             }
                             
-                        }
-                    }
-                }
-            }
+                        } // else
+                    } // num of items in section > 0
+                } // sections for loop
+            } // num of sections > 0 
             
             
             // Do not run attribute generation code
