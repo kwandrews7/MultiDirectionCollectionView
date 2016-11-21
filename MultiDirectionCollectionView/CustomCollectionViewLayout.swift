@@ -7,6 +7,30 @@
 //
 
 import UIKit
+// FIXME: comparison operators with optionals were removed from the Swift Standard Libary.
+// Consider refactoring the code to use the non-optional operators.
+fileprivate func < <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
+  switch (lhs, rhs) {
+  case let (l?, r?):
+    return l < r
+  case (nil, _?):
+    return true
+  default:
+    return false
+  }
+}
+
+// FIXME: comparison operators with optionals were removed from the Swift Standard Libary.
+// Consider refactoring the code to use the non-optional operators.
+fileprivate func > <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
+  switch (lhs, rhs) {
+  case let (l?, r?):
+    return l > r
+  default:
+    return rhs < lhs
+  }
+}
+
 
 class CustomCollectionViewLayout: UICollectionViewLayout {
     
@@ -14,7 +38,7 @@ class CustomCollectionViewLayout: UICollectionViewLayout {
     // CGRect will define the Origin and Size of the cell.
     let CELL_HEIGHT = 30.0
     let CELL_WIDTH = 100.0
-    let STATUS_BAR = UIApplication.sharedApplication().statusBarFrame.height
+    let STATUS_BAR = UIApplication.shared.statusBarFrame.height
     
     // Dictionary to hold the UICollectionViewLayoutAttributes for
     // each cell. The layout attribtues will define the cell's size 
@@ -22,7 +46,7 @@ class CustomCollectionViewLayout: UICollectionViewLayout {
     // to be one of the heavier parts of the layout. I recommend
     // holding onto this data after it has been calculated in either 
     // a dictionary or data store of some kind for a smooth performance.
-    var cellAttrsDictionary = Dictionary<NSIndexPath, UICollectionViewLayoutAttributes>()
+    var cellAttrsDictionary = Dictionary<IndexPath, UICollectionViewLayoutAttributes>()
     
     // Defines the size of the area the user can move around in
     // within the collection view.
@@ -33,11 +57,11 @@ class CustomCollectionViewLayout: UICollectionViewLayout {
     // this value if an update was performed.
     var dataSourceDidUpdate = true
     
-    override func collectionViewContentSize() -> CGSize {
+    override var collectionViewContentSize : CGSize {
         return self.contentSize
     }
     
-    override func prepareLayout() {
+    override func prepare() {
         
         // Only update header cells.
         if !dataSourceDidUpdate {
@@ -46,18 +70,18 @@ class CustomCollectionViewLayout: UICollectionViewLayout {
             let xOffset = collectionView!.contentOffset.x
             let yOffset = collectionView!.contentOffset.y
             
-            if collectionView?.numberOfSections() > 0 {
-                for section in 0...collectionView!.numberOfSections()-1 {
+            if collectionView?.numberOfSections > 0 {
+                for section in 0...collectionView!.numberOfSections-1 {
                     
                     // Confirm the section has items.
-                    if collectionView?.numberOfItemsInSection(section) > 0 {
+                    if collectionView?.numberOfItems(inSection: section) > 0 {
                         
                         // Update all items in the first row.
                         if section == 0 {
-                            for item in 0...collectionView!.numberOfItemsInSection(section)-1 {
+                            for item in 0...collectionView!.numberOfItems(inSection: section)-1 {
                                 
                                 // Build indexPath to get attributes from dictionary.
-                                let indexPath = NSIndexPath(forItem: item, inSection: section)
+                                let indexPath = IndexPath(item: item, section: section)
                                 
                                 // Update y-position to follow user.
                                 if let attrs = cellAttrsDictionary[indexPath] {
@@ -79,7 +103,7 @@ class CustomCollectionViewLayout: UICollectionViewLayout {
                         } else {
                             
                             // Build indexPath to get attributes from dictionary.
-                            let indexPath = NSIndexPath(forItem: 0, inSection: section)
+                            let indexPath = IndexPath(item: 0, section: section)
                             
                             // Update y-position to follow user.
                             if let attrs = cellAttrsDictionary[indexPath] {
@@ -103,19 +127,19 @@ class CustomCollectionViewLayout: UICollectionViewLayout {
         dataSourceDidUpdate = false
         
         // Cycle through each section of the data source.
-        if collectionView?.numberOfSections() > 0 {
-            for section in 0...collectionView!.numberOfSections()-1 {
+        if collectionView?.numberOfSections > 0 {
+            for section in 0...collectionView!.numberOfSections-1 {
                 
                 // Cycle through each item in the section.
-                if collectionView?.numberOfItemsInSection(section) > 0 {
-                    for item in 0...collectionView!.numberOfItemsInSection(section)-1 {
+                if collectionView?.numberOfItems(inSection: section) > 0 {
+                    for item in 0...collectionView!.numberOfItems(inSection: section)-1 {
                         
                         // Build the UICollectionVieLayoutAttributes for the cell.
-                        let cellIndex = NSIndexPath(forItem: item, inSection: section)
+                        let cellIndex = IndexPath(item: item, section: section)
                         let xPos = Double(item) * CELL_WIDTH
                         let yPos = Double(section) * CELL_HEIGHT
                         
-                        let cellAttributes = UICollectionViewLayoutAttributes(forCellWithIndexPath: cellIndex)
+                        let cellAttributes = UICollectionViewLayoutAttributes(forCellWith: cellIndex)
                         cellAttributes.frame = CGRect(x: xPos, y: yPos, width: CELL_WIDTH, height: CELL_HEIGHT)
                         
                         // Determine zIndex based on cell type.
@@ -139,20 +163,20 @@ class CustomCollectionViewLayout: UICollectionViewLayout {
         }
         
         // Update content size.
-        let contentWidth = Double(collectionView!.numberOfItemsInSection(0)) * CELL_WIDTH
-        let contentHeight = Double(collectionView!.numberOfSections()) * CELL_HEIGHT
+        let contentWidth = Double(collectionView!.numberOfItems(inSection: 0)) * CELL_WIDTH
+        let contentHeight = Double(collectionView!.numberOfSections) * CELL_HEIGHT
         self.contentSize = CGSize(width: contentWidth, height: contentHeight)
         
     }
     
-    override func layoutAttributesForElementsInRect(rect: CGRect) -> [UICollectionViewLayoutAttributes]? {
+    override func layoutAttributesForElements(in rect: CGRect) -> [UICollectionViewLayoutAttributes]? {
         
         // Create an array to hold all elements found in our current view.
         var attributesInRect = [UICollectionViewLayoutAttributes]()
         
         // Check each element to see if it should be returned.
         for cellAttributes in cellAttrsDictionary.values {
-            if CGRectIntersectsRect(rect, cellAttributes.frame) {
+            if rect.intersects(cellAttributes.frame) {
                 attributesInRect.append(cellAttributes)
             }
         }
@@ -161,11 +185,11 @@ class CustomCollectionViewLayout: UICollectionViewLayout {
         return attributesInRect
     }
     
-    override func layoutAttributesForItemAtIndexPath(indexPath: NSIndexPath) -> UICollectionViewLayoutAttributes? {
+    override func layoutAttributesForItem(at indexPath: IndexPath) -> UICollectionViewLayoutAttributes? {
         return cellAttrsDictionary[indexPath]!
     }
     
-    override func shouldInvalidateLayoutForBoundsChange(newBounds: CGRect) -> Bool {
+    override func shouldInvalidateLayout(forBoundsChange newBounds: CGRect) -> Bool {
         return true
     }
     
