@@ -137,10 +137,19 @@ class CustomCollectionViewLayout: UICollectionViewLayout {
                         // Build the UICollectionVieLayoutAttributes for the cell.
                         let cellIndex = IndexPath(item: item, section: section)
                         let xPos = Double(item) * CELL_WIDTH
-                        let yPos = Double(section) * CELL_HEIGHT
-                        
+
+                        /* if section 0, yPos starts at 0. if section is not 0, 
+                           we need one more section worth of height
+                           if your section 0 height was not *exactly* double, 
+                           you could modify this to just add your section 0 height on the end
+                         */
+                        let yPos = (section == 0) ? 0.0 : Double(section + 1) * CELL_HEIGHT
+
+                        // similar logic, define height for cell attrs based on section
+                        let _height = (section == 0) ? CELL_HEIGHT * 2 : CELL_HEIGHT
+
                         let cellAttributes = UICollectionViewLayoutAttributes(forCellWith: cellIndex)
-                        cellAttributes.frame = CGRect(x: xPos, y: yPos, width: CELL_WIDTH, height: CELL_HEIGHT)
+                        cellAttributes.frame = CGRect(x: xPos, y: yPos, width: CELL_WIDTH, height: _height)
                         
                         // Determine zIndex based on cell type.
                         if section == 0 && item == 0 {
@@ -164,7 +173,11 @@ class CustomCollectionViewLayout: UICollectionViewLayout {
         
         // Update content size.
         let contentWidth = Double(collectionView!.numberOfItems(inSection: 0)) * CELL_WIDTH
-        let contentHeight = Double(collectionView!.numberOfSections) * CELL_HEIGHT
+
+        // once again, i just added one section here, if you're height of your header wasn't
+        // exactly double, you would just redo this logic to fix the content height
+        let contentHeight = Double(collectionView!.numberOfSections + 1) * CELL_HEIGHT
+
         self.contentSize = CGSize(width: contentWidth, height: contentHeight)
         
     }
