@@ -1,11 +1,3 @@
-//
-//  CustomCollectionViewCell.swift
-//  MultiDirectionCollectionView
-//
-//  Created by Kyle Andrews on 3/22/15.
-//  Copyright (c) 2015 Credera. All rights reserved.
-//
-
 import UIKit
 
 @IBDesignable

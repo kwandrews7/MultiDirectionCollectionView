@@ -1,30 +1,8 @@
-//
-//  CustomCollectionViewController.swift
-//  MultiDirectionCollectionView
-//
-//  Created by Kyle Andrews on 3/21/15.
-//  Copyright (c) 2015 Credera. All rights reserved.
-//
-
 import UIKit
 
 let reuseIdentifier = "customCell"
 
 class CustomCollectionViewController: UICollectionViewController {
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Do any additional setup after loading the view.
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
 
     // MARK: UICollectionViewDataSource
 
@@ -47,9 +25,5 @@ class CustomCollectionViewController: UICollectionViewController {
     
         return cell
     }
-
-    // MARK: UICollectionViewDelegate
-
-
 
 }

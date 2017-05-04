@@ -1,36 +1,4 @@
-//
-//  CustomCollectionViewLayout.swift
-//  MultiDirectionCollectionView
-//
-//  Created by Kyle Andrews on 4/20/15.
-//  Copyright (c) 2015 Credera. All rights reserved.
-//
-
 import UIKit
-// FIXME: comparison operators with optionals were removed from the Swift Standard Libary.
-// Consider refactoring the code to use the non-optional operators.
-fileprivate func < <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
-  switch (lhs, rhs) {
-  case let (l?, r?):
-    return l < r
-  case (nil, _?):
-    return true
-  default:
-    return false
-  }
-}
-
-// FIXME: comparison operators with optionals were removed from the Swift Standard Libary.
-// Consider refactoring the code to use the non-optional operators.
-fileprivate func > <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
-  switch (lhs, rhs) {
-  case let (l?, r?):
-    return l > r
-  default:
-    return rhs < lhs
-  }
-}
-
 
 class CustomCollectionViewLayout: UICollectionViewLayout {
     
@@ -70,15 +38,15 @@ class CustomCollectionViewLayout: UICollectionViewLayout {
             let xOffset = collectionView!.contentOffset.x
             let yOffset = collectionView!.contentOffset.y
             
-            if collectionView?.numberOfSections > 0 {
-                for section in 0...collectionView!.numberOfSections-1 {
+            if let sectionCount = collectionView?.numberOfSections, sectionCount > 0 {
+                for section in 0...sectionCount-1 {
                     
                     // Confirm the section has items.
-                    if collectionView?.numberOfItems(inSection: section) > 0 {
+                    if let rowCount = collectionView?.numberOfItems(inSection: section), rowCount > 0 {
                         
                         // Update all items in the first row.
                         if section == 0 {
-                            for item in 0...collectionView!.numberOfItems(inSection: section)-1 {
+                            for item in 0...rowCount-1 {
                                 
                                 // Build indexPath to get attributes from dictionary.
                                 let indexPath = IndexPath(item: item, section: section)
@@ -127,12 +95,12 @@ class CustomCollectionViewLayout: UICollectionViewLayout {
         dataSourceDidUpdate = false
         
         // Cycle through each section of the data source.
-        if collectionView?.numberOfSections > 0 {
-            for section in 0...collectionView!.numberOfSections-1 {
+        if let sectionCount = collectionView?.numberOfSections, sectionCount > 0 {
+            for section in 0...sectionCount-1 {
                 
                 // Cycle through each item in the section.
-                if collectionView?.numberOfItems(inSection: section) > 0 {
-                    for item in 0...collectionView!.numberOfItems(inSection: section)-1 {
+                if let rowCount = collectionView?.numberOfItems(inSection: section), rowCount > 0 {
+                    for item in 0...rowCount-1 {
                         
                         // Build the UICollectionVieLayoutAttributes for the cell.
                         let cellIndex = IndexPath(item: item, section: section)
